@@ -19,10 +19,8 @@ public class Tag {
 
     @ManyToOne
     private Post post;
-    
+
     public Tag(String name) {
         this.name = name;
     }
-
-
 }
