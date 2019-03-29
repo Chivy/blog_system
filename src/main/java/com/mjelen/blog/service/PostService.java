@@ -1,16 +1,19 @@
 package com.mjelen.blog.service;
 
-import com.mjelen.blog.repository.PostRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.mjelen.blog.entity.Post;
 
-@Service
-public class PostService {
+import java.util.List;
+import java.util.Optional;
 
-    private PostRepository posts;
+public interface PostService {
 
-    @Autowired
-    public PostService(PostRepository posts) {
-        this.posts = posts;
-    }
+    List<Post> findAll();
+
+    Optional<Post> findById(Long id);
+
+    List<Post> findThreeLastPosts();
+
+    Post save(Post post);
+
+    void deleteById(Long id);
 }
