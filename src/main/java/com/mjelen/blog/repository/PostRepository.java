@@ -20,4 +20,5 @@ public interface PostRepository extends CrudRepository<Post, Long> {
     Post save(Post post);
 
     void deleteById(Long id);
+
 }

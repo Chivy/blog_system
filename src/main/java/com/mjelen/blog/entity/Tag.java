@@ -2,10 +2,8 @@ package com.mjelen.blog.entity;
 
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -17,8 +15,8 @@ public class Tag {
 
     private String name;
 
-    @ManyToOne
-    private Post post;
+    @ManyToMany
+    private List<Post> post;
 
     public Tag(String name) {
         this.name = name;

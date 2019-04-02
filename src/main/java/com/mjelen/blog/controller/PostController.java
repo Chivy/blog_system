@@ -38,11 +38,6 @@ public class PostController {
                 ), HttpStatus.FOUND);
     }
 
-    @GetMapping()
-    public ResponseEntity<List<Post>> findThreeLastPosts() {
-        return new ResponseEntity<>(postService.findThreeLastPosts(), HttpStatus.OK);
-    }
-
     @PostMapping("/")
     public ResponseEntity<Post> createPost(@RequestBody Post post) {
         return new ResponseEntity<>(postService.save(post), HttpStatus.CREATED);
