@@ -1,9 +1,6 @@
 package com.mjelen.blog.entity;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Immutable;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -15,7 +12,6 @@ import javax.persistence.ManyToOne;
 import java.time.LocalDateTime;
 
 @Entity
-@Builder
 @NoArgsConstructor
 @Getter
 public class Comment {
@@ -41,7 +37,6 @@ public class Comment {
     @Setter
     @ManyToOne
     private Post post;
-
 
     public Comment(String content, LocalDateTime creationDate, LocalDateTime lastUpdatedDate) {
         this.content = content;

@@ -1,5 +1,6 @@
 package com.mjelen.blog.entity;
 
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.Entity;
@@ -7,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
+@NoArgsConstructor
 @RequiredArgsConstructor
 public class Role {
 
@@ -14,5 +16,5 @@ public class Role {
     @GeneratedValue
     private Long id;
 
-    private final String name;
+    private String name;
 }
