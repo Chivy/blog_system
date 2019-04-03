@@ -30,10 +30,7 @@ public class CommentController {
                 () -> new PostNotFoundException("Post with id:" + postId + "doesn't exist")
         );
 
-        post.addComment(comment);
-        comment.setPost(post);
-
-        commentService.save(comment);
+        commentService.save(post, comment);
         return new ResponseEntity<>(comment, HttpStatus.CREATED);
     }
 
@@ -45,11 +42,8 @@ public class CommentController {
         Comment comment = commentService.findById(commentId)
                 .orElseThrow(() -> new CommentNotFoundException("Comment with id: " + commentId + "doesn't exist"));
 
-        comment.setPost(null);
-        post.deleteComment(comment);
 
-        postService.save(post);
-        commentService.deleteById(commentId);
+        commentService.deleteById(post, comment);
 
         return new ResponseEntity<>(comment, HttpStatus.OK);
     }
@@ -63,15 +57,7 @@ public class CommentController {
         Comment comment = commentService.findById(commentId)
                 .orElseThrow(() -> new CommentNotFoundException("Comment with id: " + commentId + "doesn't exist"));
 
-
-        comment.setContent(reqComment.getContent());
-        comment.setLastUpdatedDate(LocalDateTime.now());
-
-        post.deleteComment(comment);
-        post.addComment(comment);
-
-        postService.save(post);
-        commentService.save(comment);
+        commentService.save(post, comment);
 
         return new ResponseEntity<>(comment, HttpStatus.OK);
     }

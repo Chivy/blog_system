@@ -41,12 +41,19 @@ public class PostController {
         return new ResponseEntity<>(postService.save(post), HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Post> deletePostById(@PathVariable Long id) {
         Post deleted = postService.findById(id).orElseThrow(
                 () -> new PostNotFoundException("Post not found, id: " + id)
         );
 
         return new ResponseEntity<>(deleted, HttpStatus.OK);
+    }
+
+    @PutMapping("/{postId}")
+    public ResponseEntity<Post> updatePost(@PathVariable Long postId, @RequestBody Post post) {
+        postService.save(post);
+
+        return new ResponseEntity<>(post, HttpStatus.OK);
     }
 }

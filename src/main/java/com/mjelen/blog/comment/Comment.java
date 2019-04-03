@@ -39,7 +39,7 @@ public class Comment {
     @ManyToOne
     private Post post;
 
-    public Comment(String content, LocalDateTime creationDate, LocalDateTime lastUpdatedDate) {
+    public Comment(String content, LocalDateTime lastUpdatedDate) {
         this.content = content;
         this.creationDate = LocalDateTime.now();
         this.lastUpdatedDate = lastUpdatedDate;
