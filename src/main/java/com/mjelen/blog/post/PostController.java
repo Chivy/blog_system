@@ -50,8 +50,8 @@ public class PostController {
         return new ResponseEntity<>(deleted, HttpStatus.OK);
     }
 
-    @PutMapping("/{postId}")
-    public ResponseEntity<Post> updatePost(@PathVariable Long postId, @RequestBody Post post) {
+    @PutMapping("/")
+    public ResponseEntity<Post> updatePost(@RequestBody Post post) {
         postService.save(post);
 
         return new ResponseEntity<>(post, HttpStatus.OK);
