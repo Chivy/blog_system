@@ -55,6 +55,8 @@ public class Post {
         this.lastUpdateTime = LocalDateTime.now();
     }
 
+
+
     public void addComment(Comment comment) {
         if (comments == null) {
             comments = new ArrayList<>();

@@ -1,8 +1,6 @@
 package com.mjelen.blog.post;
 
-import com.mjelen.blog.comment.CommentService;
 import com.mjelen.blog.post.exception.PostNotFoundException;
-import com.mjelen.blog.account.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,12 +16,12 @@ public class PostController {
 
 
     @Autowired
-    public PostController(PostService postService, CommentService commentService, UserService userService) {
+    public PostController(PostService postService) {
         this.postService = postService;
 
     }
 
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<List<Post>> findAllPosts() {
         return new ResponseEntity<>(postService.findAll(), HttpStatus.OK);
     }
@@ -36,7 +34,7 @@ public class PostController {
                 ), HttpStatus.FOUND);
     }
 
-    @PostMapping("/")
+    @PostMapping
     public ResponseEntity<Post> createPost(@RequestBody Post post) {
         return new ResponseEntity<>(postService.save(post), HttpStatus.CREATED);
     }
@@ -50,7 +48,8 @@ public class PostController {
         return new ResponseEntity<>(deleted, HttpStatus.OK);
     }
 
-    @PutMapping("/")
+
+    @PutMapping
     public ResponseEntity<Post> updatePost(@RequestBody Post post) {
         postService.save(post);
 

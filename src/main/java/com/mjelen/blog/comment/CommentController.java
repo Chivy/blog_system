@@ -48,6 +48,14 @@ public class CommentController {
         return new ResponseEntity<>(comment, HttpStatus.OK);
     }
 
+    @DeleteMapping("/deleteAll")
+    public void deleteCommentsFromPost(@PathVariable Long postId) {
+        Post post = postService.findById(postId)
+                .orElseThrow(() -> new PostNotFoundException("Post with id: " + postId + "doesn't exist"));
+
+
+    }
+
     @PutMapping("/{commentId}")
     public ResponseEntity<Comment> updateCommentById(@PathVariable Long commentId, @RequestBody Comment reqComment,
                                                      @PathVariable Long postId) {
@@ -61,4 +69,6 @@ public class CommentController {
 
         return new ResponseEntity<>(comment, HttpStatus.OK);
     }
+
+
 }
