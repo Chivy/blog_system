@@ -28,6 +28,7 @@ public class Post {
 
     @NotBlank
     @NotNull
+    @Lob
     private String content;
 
     @CreationTimestamp
