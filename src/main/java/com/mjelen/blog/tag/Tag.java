@@ -18,7 +18,7 @@ public class Tag {
 
     private String name;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "tags", cascade = CascadeType.ALL)
     private List<Post> post;
 
     public Tag(String name) {
