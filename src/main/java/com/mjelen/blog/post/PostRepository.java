@@ -1,5 +1,6 @@
 package com.mjelen.blog.post;
 
+import com.mjelen.blog.tag.Tag;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -16,8 +17,7 @@ public interface PostRepository extends CrudRepository<Post, Long> {
 
     List<Post> findFirst3ByCreationDate(LocalDateTime dateTime);
 
-    Post save(Post post);
-
     void deleteById(Long id);
 
+    List<Post> findByTags(Tag tag);
 }

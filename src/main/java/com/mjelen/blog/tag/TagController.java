@@ -14,7 +14,6 @@ import java.util.Set;
 public class TagController {
 
     private TagService tagService;
-    private PostService postService;
 
     @Autowired
     public TagController(TagService tagService) {
@@ -49,5 +48,14 @@ public class TagController {
         tagService.deleteByName(name);
 
         return new ResponseEntity<>(deleted, HttpStatus.OK);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Tag> updateTag(@RequestBody Tag tag, @PathVariable Long id) {
+        Tag tagToUpdate = tagService.findById(id)
+                .orElseThrow(() -> new TagNotFoundException("Tag with id: " + id + "doesn't exist"));
+        return new ResponseEntity<>(
+                tagService.update(tag), HttpStatus.OK
+        );
     }
 }

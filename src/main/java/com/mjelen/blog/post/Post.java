@@ -68,4 +68,12 @@ public class Post {
     public void deleteComment(Comment comment) {
         comments.remove(comment);
     }
+
+    public void deleteTag(Tag tag) {
+        tags.remove(tag);
+    }
+
+    public void addTag(Tag tag) {
+        tags.add(tag);
+    }
 }
