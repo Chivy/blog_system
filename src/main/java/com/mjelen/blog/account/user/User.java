@@ -1,5 +1,6 @@
 package com.mjelen.blog.account.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.mjelen.blog.account.role.Role;
 import com.mjelen.blog.comment.Comment;
 import com.mjelen.blog.post.Post;
@@ -15,6 +16,7 @@ import java.util.List;
 @Entity
 @Getter
 @NoArgsConstructor
+@JsonIgnoreProperties({"posts", "roles", "comments"})
 public class User {
 
     @Id

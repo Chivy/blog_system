@@ -1,15 +1,14 @@
 package com.mjelen.blog.comment;
 
-import com.mjelen.blog.post.Post;
 import com.mjelen.blog.account.user.User;
-import lombok.*;
+import com.mjelen.blog.post.Post;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -22,6 +21,7 @@ public class Comment {
     private Long id;
 
     @Setter
+    @Lob
     private String content;
 
     @CreationTimestamp
@@ -29,7 +29,7 @@ public class Comment {
 
     @Setter
     @UpdateTimestamp
-    private LocalDateTime lastUpdatedDate;
+    private LocalDateTime lastUpdateDate;
 
     @Setter
     @ManyToOne
@@ -42,7 +42,7 @@ public class Comment {
     public Comment(String content, LocalDateTime lastUpdatedDate) {
         this.content = content;
         this.creationDate = LocalDateTime.now();
-        this.lastUpdatedDate = lastUpdatedDate;
+        this.lastUpdateDate = lastUpdatedDate;
     }
 }
 

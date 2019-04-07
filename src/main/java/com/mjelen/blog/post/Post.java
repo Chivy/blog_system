@@ -1,8 +1,9 @@
 package com.mjelen.blog.post;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.mjelen.blog.account.user.User;
 import com.mjelen.blog.comment.Comment;
 import com.mjelen.blog.tag.Tag;
-import com.mjelen.blog.account.user.User;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @EqualsAndHashCode
+@JsonIgnoreProperties({"comments"})
 public class Post {
 
     @Id

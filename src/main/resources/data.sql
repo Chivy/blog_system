@@ -188,14 +188,14 @@ insert into post_tags (tag_id, post_id) values (6, 10);
 insert into post_tags (tag_id, post_id) values (4, 9);
 insert into post_tags (tag_id, post_id) values (7, 5);
 
-insert into users_roles (user_id, role_id) values (1, 4);
-insert into users_roles (user_id, role_id) values (4, 4);
-insert into users_roles (user_id, role_id) values (3, 2);
-insert into users_roles (user_id, role_id) values (2, 5);
-insert into users_roles (user_id, role_id) values (2, 1);
-insert into users_roles (user_id, role_id) values (5, 1);
-insert into users_roles (user_id, role_id) values (4, 4);
-insert into users_roles (user_id, role_id) values (4, 1);
 insert into users_roles (user_id, role_id) values (3, 4);
+insert into users_roles (user_id, role_id) values (3, 4);
+insert into users_roles (user_id, role_id) values (4, 3);
+insert into users_roles (user_id, role_id) values (4, 2);
+insert into users_roles (user_id, role_id) values (3, 2);
+insert into users_roles (user_id, role_id) values (4, 3);
 insert into users_roles (user_id, role_id) values (2, 2);
+insert into users_roles (user_id, role_id) values (1, 1);
+insert into users_roles (user_id, role_id) values (5, 3);
+insert into users_roles (user_id, role_id) values (5, 1);
 
