@@ -1,22 +1,24 @@
+insert into role (id, name) values (1, 'ROLE_USER');
+insert into role (id, name) values (2, 'ROLE_ADMIN');
+insert into role (id, name) values (3, 'ROLE_AUTHOR');
 
-insert into user (id, created_date, email, last_updated_date, password, username) values (1, '2018-12-28 00:51:33', 'lizak0@live.com', '2018-05-03 13:31:25', 'nkfmVFGsXF', 'munwins0');
-insert into user (id, created_date, email, last_updated_date, password, username) values (2, '2019-03-10 14:14:49', 'dchallin1@disqus.com', '2018-08-18 23:35:15', 'U6qZxNg7MHLY', 'fknibb1');
-insert into user (id, created_date, email, last_updated_date, password, username) values (3, '2018-08-26 22:38:12', 'enattriss2@wired.com', '2018-06-25 06:20:44', 'x4ZgJPYdr0', 'vchippindale2');
-insert into user (id, created_date, email, last_updated_date, password, username) values (4, '2018-08-02 07:39:46', 'tbarrett3@ca.gov', '2018-09-06 13:34:16', 'PNL635jpw', 'ccanniffe3');
-insert into user (id, created_date, email, last_updated_date, password, username) values (5, '2018-05-31 22:28:19', 'wverity4@home.pl', '2018-04-20 05:51:20', 'khL3XK', 'epochin4');
+insert into user (id, created_date, email, last_updated_date, password, username, role_id) values (1, '2018-12-28 00:51:33', 'lizak0@live.com', '2018-05-03 13:31:25', 'nkfmVFGsXF', 'munwins0', 1);
+insert into user (id, created_date, email, last_updated_date, password, username, role_id) values (2, '2019-03-10 14:14:49', 'dchallin1@disqus.com', '2018-08-18 23:35:15', 'U6qZxNg7MHLY', 'fknibb1', 1);
+insert into user (id, created_date, email, last_updated_date, password, username, role_id) values (3, '2018-08-26 22:38:12', 'enattriss2@wired.com', '2018-06-25 06:20:44', 'x4ZgJPYdr0', 'vchippindale2', 2);
+insert into user (id, created_date, email, last_updated_date, password, username, role_id) values (4, '2018-08-02 07:39:46', 'tbarrett3@ca.gov', '2018-09-06 13:34:16', 'PNL635jpw', 'ccanniffe3', 2);
+insert into user (id, created_date, email, last_updated_date, password, username, role_id) values (5, '2018-05-31 22:28:19', 'wverity4@home.pl', '2018-04-20 05:51:20', 'khL3XK', 'epochin4', 3);
 
 
-insert into post (id, content, creation_date, last_update_time, user_id) values (1, 'In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus. Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.', '2018-08-20 19:23:42', '2018-07-04 08:52:32', 2);
-insert into post (id, content, creation_date, last_update_time, user_id) values (2, 'Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus. Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.', '2018-05-15 05:31:03', '2018-11-24 11:32:11', 3);
-insert into post (id, content, creation_date, last_update_time, user_id) values (3, 'Nullam varius. Nulla facilisi.', '2019-01-28 12:46:13', '2018-09-22 06:13:31', 4);
-insert into post (id, content, creation_date, last_update_time, user_id) values (4, 'Integer ac leo. Pellentesque ultrices mattis odio.', '2018-08-08 08:34:59', '2019-02-10 02:45:55', 2);
-insert into post (id, content, creation_date, last_update_time, user_id) values (5, 'Nullam molestie nibh in lectus. Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.', '2019-04-03 09:10:30', '2019-03-31 04:43:50', 2);
-insert into post (id, content, creation_date, last_update_time, user_id) values (6, 'Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque. Quisque porta volutpat erat.', '2019-02-24 17:19:33', '2019-02-23 22:27:18', 5);
-insert into post (id, content, creation_date, last_update_time, user_id) values (7, 'Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vel augue. Vestibulum rutrum rutrum neque.', '2018-10-30 19:20:31', '2018-09-17 11:21:47', 1);
-insert into post (id, content, creation_date, last_update_time, user_id) values (8, 'Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat. Nulla nisl. Nunc nisl.', '2018-04-23 16:52:27', '2018-06-12 21:30:16', 4);
-insert into post (id, content, creation_date, last_update_time, user_id) values (9, 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia.', '2018-06-24 04:16:13', '2018-05-11 01:59:49', 2);
-insert into post (id, content, creation_date, last_update_time, user_id) values (10, 'Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus. Phasellus in felis. Donec semper sapien a libero. Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.', '2019-03-26 22:08:44', '2018-05-15 13:06:45', 4);
-
+insert into post (id, title, content, creation_date, last_update_time, user_id) values (1, 'ut erat id mauris', 'Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi. Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque. Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.', '2018-06-16 20:16:59', '2019-01-29 20:02:13', 4);
+insert into post (id, title, content, creation_date, last_update_time, user_id) values (2, 'odio in hac habitasse', 'Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi. Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque. Quisque porta volutpat erat.', '2018-11-10 19:17:27', '2018-07-25 21:30:30', 4);
+insert into post (id, title, content, creation_date, last_update_time, user_id) values (3, 'aenean fermentum donec ut mauris', 'Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst. Maecenas ut massa quis augue luctus tincidunt.', '2018-12-15 22:25:00', '2018-10-31 12:21:31', 3);
+insert into post (id, title, content, creation_date, last_update_time, user_id) values (4, 'velit vivamus vel nulla eget eros elementum', 'Nulla facilisi. Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.', '2018-10-05 07:24:05', '2018-11-20 05:05:44', 1);
+insert into post (id, title, content, creation_date, last_update_time, user_id) values (5, 'ac est lacinia nisi venenatis tristique', 'Maecenas rhoncus aliquam lacus.', '2018-04-24 09:55:33', '2018-11-03 06:05:32', 5);
+insert into post (id, title, content, creation_date, last_update_time, user_id) values (6, 'non velit donec diam neque vestibulum', 'Curabitur convallis. Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.', '2018-05-29 04:17:19', '2018-09-23 20:28:32', 2);
+insert into post (id, title, content, creation_date, last_update_time, user_id) values (7, 'ipsum dolor sit amet consectetuer adipiscing', 'Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio. Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue.', '2019-01-22 05:58:11', '2019-01-25 03:16:30', 5);
+insert into post (id, title, content, creation_date, last_update_time, user_id) values (8, 'id nisl venenatis lacinia aenean sit amet', 'Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum. In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.', '2018-11-08 04:26:50', '2018-08-05 16:24:21', 4);
+insert into post (id, title, content, creation_date, last_update_time, user_id) values (9, 'mattis egestas metus aenean fermentum', 'In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis. Sed ante. Vivamus tortor. Duis mattis egestas metus.', '2018-06-07 00:57:01', '2018-09-12 01:50:36', 5);
+insert into post (id, title, content, creation_date, last_update_time, user_id) values (10, 'eleifend pede libero quis', 'Cras in purus eu magna vulputate luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien.', '2019-01-07 08:37:17', '2018-08-25 11:14:23', 4);
 
 insert into comment (id, content, creation_date, last_update_date, post_id, user_id) values (1, 'Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis.', '2018-04-17 04:53:23', '2018-12-19 16:55:04', 4, 2);
 insert into comment (id, content, creation_date, last_update_date, post_id, user_id) values (2, 'Quisque ut erat. Curabitur gravida nisi at nibh.', '2019-04-03 10:06:17', '2019-01-15 16:40:13', 3, 3);
@@ -120,10 +122,7 @@ insert into comment (id, content, creation_date, last_update_date, post_id, user
 insert into comment (id, content, creation_date, last_update_date, post_id, user_id) values (100, 'Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat. In congue.', '2018-09-15 18:29:48', '2018-11-06 07:17:53', 10, 4);
 
 
-insert into role (id, name) values (1, 'ROLE_USER');
-insert into role (id, name) values (2, 'ROLE_ADMIN');
-insert into role (id, name) values (3, 'ROLE_AUTHOR');
-insert into role (id, name) values (4, 'ROLE_GUEST');
+
 
 
 insert into tag (id, name) values (1, 'JAVA');
@@ -188,14 +187,5 @@ insert into post_tags (tag_id, post_id) values (6, 10);
 insert into post_tags (tag_id, post_id) values (4, 9);
 insert into post_tags (tag_id, post_id) values (7, 5);
 
-insert into users_roles (user_id, role_id) values (3, 4);
-insert into users_roles (user_id, role_id) values (3, 4);
-insert into users_roles (user_id, role_id) values (4, 3);
-insert into users_roles (user_id, role_id) values (4, 2);
-insert into users_roles (user_id, role_id) values (3, 2);
-insert into users_roles (user_id, role_id) values (4, 3);
-insert into users_roles (user_id, role_id) values (2, 2);
-insert into users_roles (user_id, role_id) values (1, 1);
-insert into users_roles (user_id, role_id) values (5, 3);
-insert into users_roles (user_id, role_id) values (5, 1);
+
 

@@ -5,7 +5,6 @@ import com.mjelen.blog.post.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
@@ -37,7 +36,6 @@ public class CommentServiceImpl implements CommentService{
 
     @Override
     public void deleteById(Post post, Comment comment) {
-        comment.setPost(null);
         post.deleteComment(comment);
 
         commentRepository.deleteById(comment.getId());

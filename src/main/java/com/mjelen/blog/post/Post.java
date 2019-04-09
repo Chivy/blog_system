@@ -12,7 +12,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +28,9 @@ public class Post {
     private Long id;
 
     @NotBlank
-    @NotNull
+    private String title;
+
+    @NotBlank
     @Lob
     private String content;
 
@@ -53,7 +54,8 @@ public class Post {
     )
     private List<Tag> tags = new ArrayList<>();
 
-    public Post(String content) {
+    public Post(String title, String content) {
+        this.title = title;
         this.content = content;
         this.creationDate = LocalDateTime.now();
         this.lastUpdateTime = LocalDateTime.now();
