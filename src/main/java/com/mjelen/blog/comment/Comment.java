@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 public class Comment {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Setter
@@ -25,10 +25,12 @@ public class Comment {
     private String content;
 
     @CreationTimestamp
+    @Column(insertable = false, updatable = false)
     private LocalDateTime creationDate;
 
     @Setter
     @UpdateTimestamp
+    @Column(insertable = false)
     private LocalDateTime lastUpdateDate;
 
     @Setter

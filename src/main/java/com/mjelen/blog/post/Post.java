@@ -14,7 +14,9 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @NoArgsConstructor
@@ -24,7 +26,7 @@ import java.util.List;
 public class Post {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank
@@ -35,9 +37,11 @@ public class Post {
     private String content;
 
     @CreationTimestamp
+    @Column(insertable = false, updatable = false)
     private LocalDateTime creationDate;
 
     @UpdateTimestamp
+    @Column(insertable = false)
     private LocalDateTime lastUpdateTime;
 
     @ManyToOne
@@ -52,7 +56,7 @@ public class Post {
             joinColumns = @JoinColumn(name = "tag_id"),
             inverseJoinColumns = @JoinColumn(name = "post_id")
     )
-    private List<Tag> tags = new ArrayList<>();
+    private Set<Tag> tags = new HashSet<>();
 
     public Post(String title, String content) {
         this.title = title;

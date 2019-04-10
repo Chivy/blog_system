@@ -1,8 +1,8 @@
 package com.mjelen.blog.comment;
 
-import com.mjelen.blog.comment.Comment;
 import com.mjelen.blog.post.Post;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface CommentService {
@@ -15,4 +15,6 @@ public interface CommentService {
     void deleteById(Post post, Comment comment);
 
     void save(Post post, Comment comment);
+
+    List<Comment> findCommentsForPost(Long postId);
 }

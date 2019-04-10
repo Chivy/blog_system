@@ -6,7 +6,6 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.AuthenticationEntryPoint;
 
 @Configuration
@@ -14,21 +13,23 @@ import org.springframework.security.web.AuthenticationEntryPoint;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final AuthenticationEntryPoint entryPoint;
-    private final UserDetailsService userDetailsService;
 
     @Autowired
-    public SecurityConfig(AuthenticationEntryPoint entryPoint, UserDetailsService userDetailsService) {
+    public SecurityConfig(AuthenticationEntryPoint entryPoint) {
         this.entryPoint = entryPoint;
-        this.userDetailsService = userDetailsService;
-    }
-
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService);
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        super.configure(http);
+        http.csrf().disable()
+                .authorizeRequests()
+                .anyRequest().authenticated().and()
+                .httpBasic()
+                .authenticationEntryPoint(entryPoint);
+    }
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication().withUser("mjelen").password("{noop}abcba").roles("ADMIN");
     }
 }

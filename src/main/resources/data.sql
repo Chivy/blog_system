@@ -2,7 +2,8 @@ insert into role (id, name) values (1, 'ROLE_USER');
 insert into role (id, name) values (2, 'ROLE_ADMIN');
 insert into role (id, name) values (3, 'ROLE_AUTHOR');
 
-insert into user (id, created_date, email, last_updated_date, password, username, role_id) values (1, '2018-12-28 00:51:33', 'lizak0@live.com', '2018-05-03 13:31:25', 'nkfmVFGsXF', 'munwins0', 1);
+insert into user (id, created_date, email, last_updated_date, password, username, role_id)
+values (1, '2018-12-28 00:51:33', 'lizak0@live.com', '2018-05-03 13:31:25', 'nkfmVFGsXF', 'munwins0', 1);
 insert into user (id, created_date, email, last_updated_date, password, username, role_id) values (2, '2019-03-10 14:14:49', 'dchallin1@disqus.com', '2018-08-18 23:35:15', 'U6qZxNg7MHLY', 'fknibb1', 1);
 insert into user (id, created_date, email, last_updated_date, password, username, role_id) values (3, '2018-08-26 22:38:12', 'enattriss2@wired.com', '2018-06-25 06:20:44', 'x4ZgJPYdr0', 'vchippindale2', 2);
 insert into user (id, created_date, email, last_updated_date, password, username, role_id) values (4, '2018-08-02 07:39:46', 'tbarrett3@ca.gov', '2018-09-06 13:34:16', 'PNL635jpw', 'ccanniffe3', 2);
@@ -121,10 +122,6 @@ insert into comment (id, content, creation_date, last_update_date, post_id, user
 insert into comment (id, content, creation_date, last_update_date, post_id, user_id) values (99, 'Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis. Duis consequat dui nec nisi volutpat eleifend.', '2018-07-06 02:10:17', '2018-07-03 20:51:30', 8, 4);
 insert into comment (id, content, creation_date, last_update_date, post_id, user_id) values (100, 'Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat. In congue.', '2018-09-15 18:29:48', '2018-11-06 07:17:53', 10, 4);
 
-
-
-
-
 insert into tag (id, name) values (1, 'JAVA');
 insert into tag (id, name) values (2, 'C#');
 insert into tag (id, name) values (3, 'C++');
@@ -139,17 +136,12 @@ insert into tag (id, name) values (10, 'Android');
 insert into post_tags (tag_id, post_id) values (2, 6);
 insert into post_tags (tag_id, post_id) values (10, 7);
 insert into post_tags (tag_id, post_id) values (2, 2);
-insert into post_tags (tag_id, post_id) values (8, 6);
 insert into post_tags (tag_id, post_id) values (4, 7);
-insert into post_tags (tag_id, post_id) values (10, 5);
 insert into post_tags (tag_id, post_id) values (6, 2);
 insert into post_tags (tag_id, post_id) values (7, 2);
 insert into post_tags (tag_id, post_id) values (7, 3);
 insert into post_tags (tag_id, post_id) values (4, 1);
-insert into post_tags (tag_id, post_id) values (5, 5);
 insert into post_tags (tag_id, post_id) values (10, 5);
-insert into post_tags (tag_id, post_id) values (4, 10);
-insert into post_tags (tag_id, post_id) values (3, 2);
 insert into post_tags (tag_id, post_id) values (4, 6);
 insert into post_tags (tag_id, post_id) values (3, 2);
 insert into post_tags (tag_id, post_id) values (1, 8);
@@ -157,8 +149,8 @@ insert into post_tags (tag_id, post_id) values (8, 3);
 insert into post_tags (tag_id, post_id) values (8, 6);
 insert into post_tags (tag_id, post_id) values (4, 5);
 insert into post_tags (tag_id, post_id) values (9, 3);
+
 insert into post_tags (tag_id, post_id) values (4, 3);
-insert into post_tags (tag_id, post_id) values (10, 5);
 insert into post_tags (tag_id, post_id) values (2, 10);
 insert into post_tags (tag_id, post_id) values (8, 7);
 insert into post_tags (tag_id, post_id) values (1, 10);
@@ -167,24 +159,18 @@ insert into post_tags (tag_id, post_id) values (1, 3);
 insert into post_tags (tag_id, post_id) values (7, 4);
 insert into post_tags (tag_id, post_id) values (4, 9);
 insert into post_tags (tag_id, post_id) values (3, 6);
-insert into post_tags (tag_id, post_id) values (10, 10);
 insert into post_tags (tag_id, post_id) values (9, 8);
-insert into post_tags (tag_id, post_id) values (7, 5);
 insert into post_tags (tag_id, post_id) values (9, 5);
 insert into post_tags (tag_id, post_id) values (4, 10);
 insert into post_tags (tag_id, post_id) values (5, 2);
 insert into post_tags (tag_id, post_id) values (9, 9);
 insert into post_tags (tag_id, post_id) values (2, 1);
-insert into post_tags (tag_id, post_id) values (9, 7);
 insert into post_tags (tag_id, post_id) values (6, 9);
 insert into post_tags (tag_id, post_id) values (7, 7);
 insert into post_tags (tag_id, post_id) values (5, 5);
 insert into post_tags (tag_id, post_id) values (9, 7);
-insert into post_tags (tag_id, post_id) values (1, 3);
-insert into post_tags (tag_id, post_id) values (10, 10);
 insert into post_tags (tag_id, post_id) values (7, 1);
 insert into post_tags (tag_id, post_id) values (6, 10);
-insert into post_tags (tag_id, post_id) values (4, 9);
 insert into post_tags (tag_id, post_id) values (7, 5);
 
 

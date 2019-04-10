@@ -5,6 +5,7 @@ import com.mjelen.blog.post.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -45,7 +46,7 @@ public class CommentServiceImpl implements CommentService{
     @Override
     public void save(Post post, Comment comment) {
 
-        if (commentRepository.existsById(comment.getId())) {
+        if (comment.getId() != null) {
             post.deleteComment(comment);
             post.addComment(comment);
         }
@@ -56,5 +57,13 @@ public class CommentServiceImpl implements CommentService{
 
         commentRepository.save(comment);
         postRepository.save(post);
+    }
+
+    @Override
+    public List<Comment> findCommentsForPost(Long postId) {
+        Post post = postRepository.findById(postId)
+                .orElse(new Post());
+
+        return commentRepository.findByPost(post);
     }
 }

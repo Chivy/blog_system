@@ -1,6 +1,5 @@
 package com.mjelen.blog.tag;
 
-import com.mjelen.blog.post.PostService;
 import com.mjelen.blog.tag.exception.TagNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -58,4 +57,5 @@ public class TagController {
                 tagService.update(tag), HttpStatus.OK
         );
     }
+
 }

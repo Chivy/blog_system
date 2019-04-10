@@ -2,14 +2,14 @@ package com.mjelen.blog.comment;
 
 import com.mjelen.blog.comment.exception.CommentNotFoundException;
 import com.mjelen.blog.post.Post;
-import com.mjelen.blog.post.exception.PostNotFoundException;
 import com.mjelen.blog.post.PostService;
+import com.mjelen.blog.post.exception.PostNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
+import java.util.List;
 
 @RestController
 @RequestMapping("/posts/{postId}/comments")
@@ -70,5 +70,9 @@ public class CommentController {
         return new ResponseEntity<>(comment, HttpStatus.OK);
     }
 
-
+    @GetMapping
+    public ResponseEntity<List<Comment>> findCommentsForPost(@PathVariable Long postId) {
+        return new ResponseEntity<>(
+                commentService.findCommentsForPost(postId), HttpStatus.FOUND);
+    }
 }

@@ -49,7 +49,7 @@ public class PostController {
     }
 
 
-    @PutMapping
+    @PutMapping()
     public ResponseEntity<Post> updatePost(@RequestBody Post post) {
         postService.save(post);
 
