@@ -1,13 +1,15 @@
 package com.mjelen.blog.account.role;
 
 import com.mjelen.blog.account.user.User;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
+@Getter
 @NoArgsConstructor
 public class Role {
 
@@ -15,8 +17,9 @@ public class Role {
     @GeneratedValue
     private Long id;
 
-    private String name;
+    @Enumerated(EnumType.STRING)
+    private RoleName name;
 
-    @OneToMany(mappedBy = "role", fetch = FetchType.LAZY)
-    private Set<User> users = new HashSet<>();
+    @ManyToMany(mappedBy = "roles")
+    private List<User> users = new ArrayList<>();
 }

@@ -2,12 +2,16 @@ insert into role (id, name) values (1, 'ROLE_USER');
 insert into role (id, name) values (2, 'ROLE_ADMIN');
 insert into role (id, name) values (3, 'ROLE_AUTHOR');
 
-insert into user (id, created_date, email, last_updated_date, password, username, role_id)
-values (1, '2018-12-28 00:51:33', 'lizak0@live.com', '2018-05-03 13:31:25', 'nkfmVFGsXF', 'munwins0', 1);
-insert into user (id, created_date, email, last_updated_date, password, username, role_id) values (2, '2019-03-10 14:14:49', 'dchallin1@disqus.com', '2018-08-18 23:35:15', 'U6qZxNg7MHLY', 'fknibb1', 1);
-insert into user (id, created_date, email, last_updated_date, password, username, role_id) values (3, '2018-08-26 22:38:12', 'enattriss2@wired.com', '2018-06-25 06:20:44', 'x4ZgJPYdr0', 'vchippindale2', 2);
-insert into user (id, created_date, email, last_updated_date, password, username, role_id) values (4, '2018-08-02 07:39:46', 'tbarrett3@ca.gov', '2018-09-06 13:34:16', 'PNL635jpw', 'ccanniffe3', 2);
-insert into user (id, created_date, email, last_updated_date, password, username, role_id) values (5, '2018-05-31 22:28:19', 'wverity4@home.pl', '2018-04-20 05:51:20', 'khL3XK', 'epochin4', 3);
+insert into user (id, created_date, email, last_updated_date, password, username)
+values (1, '2018-12-28 00:51:33', 'lizak0@live.com', '2018-05-03 13:31:25', 'nkfmVFGsXF', 'munwins0');
+insert into user (id, created_date, email, last_updated_date, password, username)
+values (2, '2019-03-10 14:14:49', 'dchallin1@disqus.com', '2018-08-18 23:35:15', 'U6qZxNg7MHLY', 'fknibb1');
+insert into user (id, created_date, email, last_updated_date, password, username)
+values (3, '2018-08-26 22:38:12', 'enattriss2@wired.com', '2018-06-25 06:20:44', 'x4ZgJPYdr0', 'vchippindale2');
+insert into user (id, created_date, email, last_updated_date, password, username)
+values (4, '2018-08-02 07:39:46', 'tbarrett3@ca.gov', '2018-09-06 13:34:16', 'PNL635jpw', 'ccanniffe3');
+insert into user (id, created_date, email, last_updated_date, password, username)
+values (5, '2018-05-31 22:28:19', 'wverity4@home.pl', '2018-04-20 05:51:20', 'khL3XK', 'epochin4');
 
 
 insert into post (id, title, content, creation_date, last_update_time, user_id) values (1, 'ut erat id mauris', 'Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi. Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque. Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.', '2018-06-16 20:16:59', '2019-01-29 20:02:13', 4);
@@ -132,6 +136,16 @@ insert into tag (id, name) values (7, 'JPA/Hibernate');
 insert into tag (id, name) values (8, 'Kotlin');
 insert into tag (id, name) values (9, 'Scala');
 insert into tag (id, name) values (10, 'Android');
+
+insert into users_roles (user_id, role_id) values (1, 2);
+insert into users_roles (user_id, role_id) values (1, 1);
+insert into users_roles (user_id, role_id) values (1, 3);
+insert into users_roles (user_id, role_id) values (2, 1);
+insert into users_roles (user_id, role_id) values (3, 1);
+insert into users_roles (user_id, role_id) values (4, 3);
+insert into users_roles (user_id, role_id) values (4, 1);
+insert into users_roles (user_id, role_id) values (5, 1);
+
 
 insert into post_tags (tag_id, post_id) values (2, 6);
 insert into post_tags (tag_id, post_id) values (10, 7);

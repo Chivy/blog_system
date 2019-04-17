@@ -54,8 +54,7 @@ public class Post {
     @JoinTable(
             name="post_tags",
             joinColumns = @JoinColumn(name = "tag_id"),
-            inverseJoinColumns = @JoinColumn(name = "post_id")
-    )
+            inverseJoinColumns = @JoinColumn(name = "post_id"))
     private Set<Tag> tags = new HashSet<>();
 
     public Post(String title, String content) {
