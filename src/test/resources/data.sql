@@ -1,8 +1,8 @@
 
-/*insert into user ( created_date, email, last_updated_date, password, username)
-values ('2018-12-28 00:51:33', 'lizak0@live.com', '2018-05-03 13:31:25', 'nkfmVFGsXF', 'munwins0');
-*/insert into user ( created_date, email, last_updated_date, password, username)
-values ( '2019-03-10 14:14:49', 'dchallin1@disqus.com', '2018-08-18 23:35:15', 'U6qZxNg7MHLY', 'fknibb1');
+insert into user (created_date, email, last_updated_date, password, username)
+values (1, '2018-12-28 00:51:33', 'lizak0@live.com', '2018-05-03 13:31:25', 'nkfmVFGsXF', 'munwins0');
+insert into user (created_date, email, last_updated_date, password, username)
+values ('2019-03-10 14:14:49', 'dchallin1@disqus.com', '2018-08-18 23:35:15', 'U6qZxNg7MHLY', 'fknibb1');
 insert into user ( created_date, email, last_updated_date, password, username)
 values ( '2018-08-26 22:38:12', 'enattriss2@wired.com', '2018-06-25 06:20:44', 'x4ZgJPYdr0', 'vchippindale2');
 insert into user ( created_date, email, last_updated_date, password, username)
