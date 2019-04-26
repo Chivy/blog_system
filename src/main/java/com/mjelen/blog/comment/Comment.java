@@ -20,9 +20,8 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Setter
     @Lob
-    private String content;
+    private  String content;
 
     @CreationTimestamp
     @Column(insertable = false, updatable = false)

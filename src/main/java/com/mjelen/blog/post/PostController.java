@@ -1,7 +1,7 @@
 package com.mjelen.blog.post;
 
 import com.mjelen.blog.post.exception.PostNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,16 +10,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/posts")
+@RequiredArgsConstructor
 public class PostController {
 
-    private PostService postService;
-
-
-    @Autowired
-    public PostController(PostService postService) {
-        this.postService = postService;
-
-    }
+    private final PostService postService;
 
     @GetMapping
     public ResponseEntity<List<Post>> findAllPosts() {
@@ -47,7 +41,6 @@ public class PostController {
 
         return new ResponseEntity<>(deleted, HttpStatus.OK);
     }
-
 
     @PutMapping()
     public ResponseEntity<Post> updatePost(@RequestBody Post post) {

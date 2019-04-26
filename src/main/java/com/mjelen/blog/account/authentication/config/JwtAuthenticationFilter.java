@@ -1,7 +1,6 @@
 package com.mjelen.blog.account.authentication.config;
 
 import com.mjelen.blog.account.user.CustomUserDetailsService;
-import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -18,16 +17,17 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Slf4j
-@NoArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private JwtTokenProvider jwtTokenProvider;
     private CustomUserDetailsService userDetailsService;
 
-    @Autowired
-    public JwtAuthenticationFilter(JwtTokenProvider jwtTokenProvider,
-                                   CustomUserDetailsService userDetailsService) {
+    public JwtAuthenticationFilter() {
 
+    }
+
+    @Autowired
+    public JwtAuthenticationFilter(JwtTokenProvider jwtTokenProvider, CustomUserDetailsService userDetailsService) {
         this.jwtTokenProvider = jwtTokenProvider;
         this.userDetailsService = userDetailsService;
     }

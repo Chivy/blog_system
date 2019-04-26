@@ -1,19 +1,21 @@
 package com.mjelen.blog.account.request;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
 
 @Getter
 @Setter
-@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 public class LoginRequest {
 
     @NotBlank
-    private final String usernameOrEmail;
+    private String usernameOrEmail;
 
     @NotBlank
-    private final String password;
+    private String password;
 }

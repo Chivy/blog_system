@@ -3,15 +3,15 @@ insert into role (id, name) values (2, 'ROLE_ADMIN');
 insert into role (id, name) values (3, 'ROLE_AUTHOR');
 
 insert into user (id, created_date, email, last_updated_date, password, username)
-values (1, '2018-12-28 00:51:33', 'lizak0@live.com', '2018-05-03 13:31:25', 'nkfmVFGsXF', 'munwins0');
+values (1, '2018-12-28 00:51:33', 'lizak0@live.com', '2018-05-03 13:31:25', '$2a$10$T86Sfaf/V.AzkahGXYr86eidTjtaOKK8Bg.hLAgUKL5WatHSPxcGC', 'munwins0');
 insert into user (id, created_date, email, last_updated_date, password, username)
-values (2, '2019-03-10 14:14:49', 'dchallin1@disqus.com', '2018-08-18 23:35:15', 'U6qZxNg7MHLY', 'fknibb1');
+values (2, '2019-03-10 14:14:49', 'dchallin1@disqus.com', '2018-08-18 23:35:15', '$2a$10$x0/0lB/0cQePK2TJweOaU.TH2zM7nkJXXciHXOnev/55Wm/c7RwAG', 'fknibb1');
 insert into user (id, created_date, email, last_updated_date, password, username)
-values (3, '2018-08-26 22:38:12', 'enattriss2@wired.com', '2018-06-25 06:20:44', 'x4ZgJPYdr0', 'vchippindale2');
+values (3, '2018-08-26 22:38:12', 'enattriss2@wired.com', '2018-06-25 06:20:44', '$2a$10$ErqyByj1asutX7Y.gXyqvuk/SUePnmhZfFuDeSqZSzhHEZNmoHeSi', 'vchippindale2');
 insert into user (id, created_date, email, last_updated_date, password, username)
-values (4, '2018-08-02 07:39:46', 'tbarrett3@ca.gov', '2018-09-06 13:34:16', 'PNL635jpw', 'ccanniffe3');
+values (4, '2018-08-02 07:39:46', 'tbarrett3@ca.gov', '2018-09-06 13:34:16', '$2a$10$HB/aCS9c2rTD8L8P6zK5OuThI9ElOcyC1sO5B9RkgPmkhqea9XaJa', 'ccanniffe3');
 insert into user (id, created_date, email, last_updated_date, password, username)
-values (5, '2018-05-31 22:28:19', 'wverity4@home.pl', '2018-04-20 05:51:20', 'khL3XK', 'epochin4');
+values (5, '2018-05-31 22:28:19', 'wverity4@home.pl', '2018-04-20 05:51:20', '$2a$10$j9dBxUfvWOjeh0og0HcXX.PNsRlj/vLFaeAS2Ms6zGDShbfa2u3S2', 'epochin4');
 
 
 insert into post (id, title, content, creation_date, last_update_time, user_id) values (1, 'ut erat id mauris', 'Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi. Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque. Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.', '2018-06-16 20:16:59', '2019-01-29 20:02:13', 4);

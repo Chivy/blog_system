@@ -5,7 +5,9 @@ import com.mjelen.blog.account.request.LoginRequest;
 import com.mjelen.blog.account.request.RegistrationRequest;
 import com.mjelen.blog.account.response.ApiResponse;
 import com.mjelen.blog.account.response.JwtAuthenticationResponse;
+import com.mjelen.blog.account.role.RoleRepository;
 import com.mjelen.blog.account.role.RoleService;
+import com.mjelen.blog.account.user.User;
 import com.mjelen.blog.account.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -23,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/authenticate")
+@RequestMapping("/authentication")
 @RequiredArgsConstructor
 public class AuthenticationController {
 
@@ -32,6 +34,7 @@ public class AuthenticationController {
     private final RoleService roleService;
     private final PasswordEncoder passwordEncoder;
     private final JwtTokenProvider jwtTokenProvider;
+    private final RoleRepository roleRepository;
 
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest user) {
@@ -57,8 +60,12 @@ public class AuthenticationController {
         if (userService.existsByEmail(registrationRequest.getEmail()))
             return new ResponseEntity<>(
                     new ApiResponse(false, "Email address is already taken!"),
-                    HttpStatus.BAD_REQUEST
-            );
+                    HttpStatus.BAD_REQUEST);
+
+        User user = new User(
+                registrationRequest.getUsername(),
+                passwordEncoder.encode(registrationRequest.getPassword()),
+                registrationRequest.getEmail());
 
         return null;
     }

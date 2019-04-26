@@ -2,7 +2,6 @@ package com.mjelen.blog.account.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.mjelen.blog.account.role.Role;
-import com.mjelen.blog.account.validation.PasswordMatches;
 import com.mjelen.blog.comment.Comment;
 import com.mjelen.blog.post.Post;
 import lombok.Getter;
@@ -11,6 +10,9 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -20,26 +22,32 @@ import java.util.Set;
 @Entity
 @Getter
 @NoArgsConstructor
-@PasswordMatches
-@JsonIgnoreProperties({"password", "matchingPassword", "posts", "roles", "comments"})
+@JsonIgnoreProperties({"id", "password", "matchingPassword", "posts", "roles", "comments"})
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
+    @Size(min = 6, max = 30)
     @Column(unique = true)
     private String username;
-    private String password;
-    private String matchingPassword;
 
+    @NotBlank
+    private String password;
+
+    @NotBlank
+    @Email
     @Column(unique = true)
     private String email;
 
     @CreationTimestamp
+    @Column(insertable = false, updatable = false)
     private LocalDateTime createdDate;
 
     @UpdateTimestamp
+    @Column(insertable = false)
     private LocalDateTime lastUpdatedDate;
 
     @OneToMany(mappedBy = "user")
@@ -59,10 +67,5 @@ public class User {
         this.username = username;
         this.password = password;
         this.email = email;
-    }
-
-
-    public void setMatchingPassword(String matchingPassword) {
-        this.matchingPassword = matchingPassword;
     }
 }

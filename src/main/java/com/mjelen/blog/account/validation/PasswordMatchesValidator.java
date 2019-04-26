@@ -1,6 +1,6 @@
 package com.mjelen.blog.account.validation;
 
-import com.mjelen.blog.account.user.User;
+import com.mjelen.blog.account.request.RegistrationRequest;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -10,7 +10,7 @@ public class PasswordMatchesValidator implements ConstraintValidator<PasswordMat
    }
 
    public boolean isValid(Object obj, ConstraintValidatorContext context) {
-      User user = (User) obj;
+      RegistrationRequest user = (RegistrationRequest) obj;
       return user.getPassword().equals(user.getMatchingPassword());
    }
 }

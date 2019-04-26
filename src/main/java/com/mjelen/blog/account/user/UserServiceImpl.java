@@ -1,5 +1,6 @@
 package com.mjelen.blog.account.user;
 
+import com.mjelen.blog.account.request.RegistrationRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,5 +37,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean existsByEmail(String email) {
         return userRepository.existsByEmail(email);
+    }
+
+    @Override
+    public User registerUser(RegistrationRequest registrationRequest) {
+        return null;
     }
 }

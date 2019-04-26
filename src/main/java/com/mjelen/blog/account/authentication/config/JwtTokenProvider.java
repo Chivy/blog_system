@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
+import java.time.temporal.ChronoField;
 import java.util.Date;
 
 @Slf4j
@@ -20,23 +21,26 @@ public class JwtTokenProvider {
     @Value("${jwt.secret}")
     private String jwtSecret;
 
-    @Value("${jwt.expirationInMs")
+    @Value("${jwt.expirationInMs}")
     private String jwtExpirationInMs;
 
     public String generateToken(Authentication authentication) {
         UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
 
         LocalDateTime now = LocalDateTime.now();
-        LocalDateTime expiryDate = LocalDateTime.parse(now + jwtExpirationInMs);
+        LocalDateTime expiryDate = now.plus(
+                Long.parseLong(jwtExpirationInMs),
+                ChronoField.MILLI_OF_DAY.getBaseUnit()
+        );
 
         return Jwts.builder()
                 .setSubject(userPrincipal.getId().toString())
                 .setIssuedAt(new Date())
-                .setExpiration(Date.from(expiryDate.toInstant(ZoneOffset.from(expiryDate))))
+                .setExpiration(Date.from(expiryDate.toInstant(ZoneOffset.UTC)))
                 .signWith(Keys.hmacShaKeyFor(jwtSecret.getBytes())).compact();
     }
 
-    public Long getUserIdFromJWT(String token) {
+    Long getUserIdFromJWT(String token) {
         Claims claims = Jwts.parser()
                 .setSigningKey(jwtSecret)
                 .parseClaimsJws(token)
@@ -45,7 +49,7 @@ public class JwtTokenProvider {
         return Long.parseLong(claims.getSubject());
     }
 
-    public boolean validateToken(String authToken) {
+    boolean validateToken(String authToken) {
         try {
             Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(authToken);
             return true;
