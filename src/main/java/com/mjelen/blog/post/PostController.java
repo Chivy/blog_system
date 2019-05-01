@@ -1,9 +1,14 @@
 package com.mjelen.blog.post;
 
+import com.mjelen.blog.account.authentication.AuthenticatedUser;
+import com.mjelen.blog.account.user.User;
+import com.mjelen.blog.account.user.UserPrincipal;
+import com.mjelen.blog.account.user.UserService;
 import com.mjelen.blog.post.exception.PostNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,6 +19,7 @@ import java.util.List;
 public class PostController {
 
     private final PostService postService;
+    private final UserService userService;
 
     @GetMapping
     public ResponseEntity<List<Post>> findAllPosts() {
@@ -29,8 +35,15 @@ public class PostController {
     }
 
     @PostMapping
-    public ResponseEntity<Post> createPost(@RequestBody Post post) {
-        return new ResponseEntity<>(postService.save(post), HttpStatus.CREATED);
+    public ResponseEntity<Post> createPost(@RequestBody Post post, @AuthenticatedUser UserPrincipal userPrincipal) {
+        User user = userService.findByUsername(userPrincipal.getUsername())
+                .orElseThrow(
+                        () -> new UsernameNotFoundException("User not found")
+                );
+
+        return new ResponseEntity<>(
+                postService.save(post, user), HttpStatus.CREATED
+        );
     }
 
     @DeleteMapping("/{id}")
@@ -43,8 +56,13 @@ public class PostController {
     }
 
     @PutMapping()
-    public ResponseEntity<Post> updatePost(@RequestBody Post post) {
-        postService.save(post);
+    public ResponseEntity<Post> updatePost(@RequestBody Post post, @AuthenticatedUser UserPrincipal userPrincipal) {
+        User user = userService.findByUsername(userPrincipal.getUsername())
+                .orElseThrow(
+                        () -> new UsernameNotFoundException("User not found")
+                );
+
+        postService.save(post, user);
 
         return new ResponseEntity<>(post, HttpStatus.OK);
     }

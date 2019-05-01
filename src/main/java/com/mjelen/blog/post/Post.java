@@ -7,6 +7,7 @@ import com.mjelen.blog.tag.Tag;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -45,6 +46,7 @@ public class Post {
     private LocalDateTime lastUpdateTime;
 
     @ManyToOne
+    @Setter
     private User user;
 
     @OneToMany(mappedBy = "post", fetch = FetchType.LAZY)

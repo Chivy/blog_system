@@ -25,6 +25,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
+    public Optional<User> findByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
+
+    @Override
+    @Transactional
     public List<User> findAll() {
         return (List<User>) userRepository.findAll();
     }

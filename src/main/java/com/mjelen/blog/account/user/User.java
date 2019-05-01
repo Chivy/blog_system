@@ -68,4 +68,15 @@ public class User {
         this.password = password;
         this.email = email;
     }
+
+    public void addPost(Post post) {
+        if (posts == null) {
+            posts = new ArrayList<>();
+        }
+        posts.add(post);
+    }
+
+    public void deletePost(Post post) {
+        posts.remove(post);
+    }
 }

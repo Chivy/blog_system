@@ -21,7 +21,7 @@ public class Comment {
     private Long id;
 
     @Lob
-    private  String content;
+    private String content;
 
     @CreationTimestamp
     @Column(insertable = false, updatable = false)

@@ -21,16 +21,17 @@ class PostControllerITest {
     @Autowired
     private MockMvc mockMvc;
 
-
     @Test
     @WithMockUser
     void findAllTest() throws Exception {
         mockMvc.perform(get("/posts"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
-                .andExpect(jsonPath("$.posts.length()").value(10))
-                .andExpect(jsonPath("$.posts.comments").doesNotExist())
-                .andExpect(jsonPath("$.posts[0].tags.length()").value(3))
-                .andExpect(jsonPath("$.posts[0].user").exists());
+                .andExpect(jsonPath("$.length()").value(10))
+                .andExpect(jsonPath("$.comments").doesNotExist())
+                .andExpect(jsonPath("$.[0].tags.length()").value(3))
+                .andExpect(jsonPath("$.[0].user").exists());
     }
+
+
 }

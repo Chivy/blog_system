@@ -27,11 +27,11 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-    implementation 'com.h2database:h2:1.4.197'
     implementation 'io.jsonwebtoken:jjwt-api:0.10.6'
 
     compileOnly 'org.projectlombok:lombok'
 
+    runtimeOnly 'com.h2database:h2:1.4.197'
     runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.10.6'
     runtime group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.10.6'
     runtimeOnly 'mysql:mysql-connector-java:8.0.15'

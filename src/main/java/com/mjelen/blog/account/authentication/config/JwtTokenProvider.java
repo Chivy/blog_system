@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
+import javax.crypto.SecretKey;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.time.temporal.ChronoField;
@@ -23,6 +24,8 @@ public class JwtTokenProvider {
 
     @Value("${jwt.expirationInMs}")
     private String jwtExpirationInMs;
+    private final SecretKey key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+
 
     public String generateToken(Authentication authentication) {
         UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
@@ -37,12 +40,12 @@ public class JwtTokenProvider {
                 .setSubject(userPrincipal.getId().toString())
                 .setIssuedAt(new Date())
                 .setExpiration(Date.from(expiryDate.toInstant(ZoneOffset.UTC)))
-                .signWith(Keys.hmacShaKeyFor(jwtSecret.getBytes())).compact();
+                .signWith(key).compact();
     }
 
     Long getUserIdFromJWT(String token) {
         Claims claims = Jwts.parser()
-                .setSigningKey(jwtSecret)
+                .setSigningKey(key)
                 .parseClaimsJws(token)
                 .getBody();
 
@@ -51,7 +54,7 @@ public class JwtTokenProvider {
 
     boolean validateToken(String authToken) {
         try {
-            Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(authToken);
+            Jwts.parser().setSigningKey(key).parseClaimsJws(authToken);
             return true;
         } catch (SignatureException e) {
             log.error("Invalid JWT Signature");
