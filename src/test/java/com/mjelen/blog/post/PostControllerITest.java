@@ -1,5 +1,8 @@
 package com.mjelen.blog.post;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
+import com.mjelen.blog.tag.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,8 +10,13 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.annotation.PostConstruct;
+import java.util.Set;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -16,10 +24,21 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ExtendWith(SpringExtension.class)
 @AutoConfigureMockMvc
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 class PostControllerITest {
 
     @Autowired
     private MockMvc mockMvc;
+
+    @Autowired
+    private PostService postService;
+
+    private ObjectWriter ow;
+
+    @PostConstruct
+    private void initialize() {
+        ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+    }
 
     @Test
     @WithMockUser
@@ -33,5 +52,24 @@ class PostControllerITest {
                 .andExpect(jsonPath("$.[0].user").exists());
     }
 
+    @Test
+    @WithMockUser
+    @Transactional
+    void findById_withExistingId() throws Exception {
+        long postId = 1;
+        Post post = postService.findById(postId)
+                .orElse(new Post());
 
+        Set<Tag> tags = post.getTags();
+
+        mockMvc.perform(get("/posts/{postId}", postId))
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
+                .andExpect(status().isFound())
+                .andExpect(jsonPath("$.id").doesNotExist())
+                .andExpect(jsonPath("$.title").value(post.getTitle()))
+                .andExpect(jsonPath("$.content").value(post.getContent()))
+                .andExpect(jsonPath("$.comments").doesNotExist())
+                .andExpect(jsonPath("$.user").exists())
+                .andExpect(jsonPath("$.tags.length()").value(tags.size()));
+    }
 }

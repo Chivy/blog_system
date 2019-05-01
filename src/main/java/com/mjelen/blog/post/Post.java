@@ -23,7 +23,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Getter
 @EqualsAndHashCode
-@JsonIgnoreProperties({"comments"})
+@JsonIgnoreProperties({"id", "comments"})
 public class Post {
 
     @Id
