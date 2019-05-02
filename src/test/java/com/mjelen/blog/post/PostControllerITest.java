@@ -1,10 +1,10 @@
 package com.mjelen.blog.post;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
 import com.mjelen.blog.tag.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,7 +15,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.PostConstruct;
 import java.util.Set;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -33,12 +32,6 @@ class PostControllerITest {
     @Autowired
     private PostService postService;
 
-    private ObjectWriter ow;
-
-    @PostConstruct
-    private void initialize() {
-        ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-    }
 
     @Test
     @WithMockUser
@@ -71,5 +64,18 @@ class PostControllerITest {
                 .andExpect(jsonPath("$.comments").doesNotExist())
                 .andExpect(jsonPath("$.user").exists())
                 .andExpect(jsonPath("$.tags.length()").value(tags.size()));
+    }
+
+    @ParameterizedTest
+    @ValueSource(longs = {
+            34541234345L, -213123L, 0L
+    })
+    @WithMockUser
+    void findById_withBadId(Long id) throws Exception {
+        mockMvc.perform(get("/posts/{postId}", id))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.status").value(404))
+                .andExpect(jsonPath("$.message").value("Post not found, id: " + id))
+                .andExpect(jsonPath("$.timestamp").exists());
     }
 }
