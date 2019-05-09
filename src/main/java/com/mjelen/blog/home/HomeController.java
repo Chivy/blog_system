@@ -2,7 +2,7 @@ package com.mjelen.blog.home;
 
 import com.mjelen.blog.post.Post;
 import com.mjelen.blog.post.PostService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,14 +13,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/home")
+@RequiredArgsConstructor
 public class HomeController {
 
-    private PostService postService;
-
-    @Autowired
-    public HomeController(PostService postService) {
-        this.postService = postService;
-    }
+    private final PostService postService;
 
     @GetMapping
     public ResponseEntity<List<Post>> showLastThreePosts() {

@@ -1,19 +1,25 @@
 package com.mjelen.blog.post;
 
 import com.mjelen.blog.account.user.User;
+import com.mjelen.blog.tag.Tag;
+import com.mjelen.blog.tag.TagService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class PostServiceImpl implements PostService{
 
     private final PostRepository postRepository;
+    private final TagService tagService;
 
     @Override
     public List<Post> findAll() {
@@ -42,13 +48,30 @@ public class PostServiceImpl implements PostService{
 
     @Override
     @Transactional
-    public void deleteById(Long id) {
-        Post post = postRepository.findById(id)
-                .orElse(new Post());
-
+    public void delete(Post post) {
         User user = post.getUser();
         user.deletePost(post);
 
-        postRepository.deleteById(id);
+        postRepository.deleteById(post.getId());
+    }
+
+    @Override
+    public List<Post> findByTagName(Tag tag) {
+        return postRepository.findByTags(tag);
+    }
+
+    @Override
+    @Transactional
+    public Post addTags(Post post, String[] names) {
+        Set<Tag> tagsToAdd = Arrays.stream(names)
+                .distinct()
+                .map(name -> tagService.findByName(name).orElse(new Tag()))
+                .filter(tag -> tag.getId() != 0)
+                .collect(Collectors.toSet());
+
+        tagsToAdd.forEach(tag -> tag.addPost(post));
+        post.addTags(tagsToAdd);
+
+        return post;
     }
 }

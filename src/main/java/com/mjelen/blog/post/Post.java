@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.mjelen.blog.account.user.User;
 import com.mjelen.blog.comment.Comment;
 import com.mjelen.blog.tag.Tag;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,15 +13,11 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @NoArgsConstructor
 @Getter
-@EqualsAndHashCode
 @JsonIgnoreProperties({"id", "comments"})
 public class Post {
 
@@ -86,5 +81,29 @@ public class Post {
 
     public void addTag(Tag tag) {
         tags.add(tag);
+    }
+
+    void addTags(Set<Tag> tags) {
+        if (this.tags == null) {
+            this.tags = new HashSet<>();
+        }
+        this.tags.addAll(tags);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Post post = (Post) o;
+        return Objects.equals(id, post.id) &&
+                Objects.equals(title, post.title) &&
+                Objects.equals(content, post.content) &&
+                Objects.equals(creationDate, post.creationDate) &&
+                Objects.equals(lastUpdateTime, post.lastUpdateTime);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, content, creationDate, lastUpdateTime);
     }
 }

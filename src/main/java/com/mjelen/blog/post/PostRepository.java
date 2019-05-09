@@ -20,4 +20,5 @@ public interface PostRepository extends CrudRepository<Post, Long> {
     void deleteById(Long id);
 
     List<Post> findByTags(Tag tag);
+
 }

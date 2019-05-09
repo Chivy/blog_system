@@ -2,22 +2,18 @@ package com.mjelen.blog.tag;
 
 import com.mjelen.blog.post.Post;
 import com.mjelen.blog.post.PostRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.Set;
 
 @Service
+@RequiredArgsConstructor
 public class TagServiceImpl implements TagService {
 
-    private TagRepository tagRepository;
-    private PostRepository postRepository;
-
-    @Autowired
-    public TagServiceImpl(TagRepository tagRepository) {
-        this.tagRepository = tagRepository;
-    }
+    private final TagRepository tagRepository;
+    private final PostRepository postRepository;
 
     @Override
     public Set<Tag> findAll() {
